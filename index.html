@@ -56,7 +56,38 @@
     font-size:0.82rem;
     color:var(--sub);
   }
+  .logi-chip{font-size:0.92rem;}
   .logi-chip b{color:var(--text);font-weight:600;}
+  .prep{
+    max-width:760px;
+    margin:0 auto 18px;
+    background:var(--panel2);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:16px 18px;
+  }
+  .prep h3{
+    margin:0 0 10px;
+    font-size:1.05rem;
+    color:var(--accent2);
+  }
+  .prep ul{margin:0;padding-left:18px;}
+  .prep li{
+    color:var(--sub);
+    font-size:0.97rem;
+    line-height:1.75;
+  }
+  .prep li b{color:var(--text);}
+  .pick-note{
+    background:rgba(255,180,84,0.1);
+    border:1px solid var(--accent2);
+    border-radius:10px;
+    padding:10px 14px;
+    font-size:0.95rem;
+    color:var(--accent2);
+    font-weight:600;
+    margin:10px 0;
+  }
   .weather-bar{
     display:flex;
     gap:10px;
@@ -175,40 +206,43 @@
     vertical-align:middle;
   }
   .card .time{
-    flex:0 0 52px;
+    flex:0 0 56px;
     font-weight:700;
     color:var(--accent);
-    font-size:0.85rem;
+    font-size:0.95rem;
     padding-top:2px;
   }
   .card .icon{
     flex:0 0 28px;
-    font-size:1.3rem;
+    font-size:1.4rem;
     text-align:center;
   }
   .card .body{flex:1;min-width:0;}
   .card .title{
     font-weight:700;
-    font-size:0.98rem;
-    margin-bottom:2px;
+    font-size:1.08rem;
+    margin-bottom:3px;
   }
   .card .meta{
     color:var(--accent2);
-    font-size:0.78rem;
-    margin-bottom:4px;
+    font-size:0.92rem;
+    margin-bottom:5px;
   }
   .card .desc{
     color:var(--sub);
-    font-size:0.85rem;
-    line-height:1.5;
+    font-size:1rem;
+    line-height:1.6;
   }
-  .card .links{margin-top:8px;display:flex;gap:10px;flex-wrap:wrap;}
-  .card a.maplink{
-    font-size:0.78rem;
+  .card .links{margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;}
+  .card a.maplink, .card a.tellink{
+    font-size:0.95rem;
     color:var(--accent);
     text-decoration:none;
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:6px 12px;
   }
-  .card a.maplink:hover{text-decoration:underline;}
+  .card a.maplink:hover, .card a.tellink:hover{background:rgba(94,177,255,0.12);}
   .note{
     background:var(--panel2);
     border:1px dashed var(--border);
@@ -239,8 +273,20 @@
   footer{
     text-align:center;
     color:var(--sub);
-    font-size:0.75rem;
+    font-size:0.8rem;
     padding:20px;
+  }
+  @media (max-width:520px){
+    header, .logibar, .tabs, main{padding-left:14px;padding-right:14px;}
+    .prep{margin-left:14px;margin-right:14px;}
+    #map{height:260px;}
+    .card{padding:14px;gap:10px;}
+    .card .time{flex:0 0 48px;font-size:0.92rem;}
+    .card .icon{flex:0 0 24px;font-size:1.25rem;}
+    .card .title{font-size:1.05rem;}
+    .card .desc{font-size:1rem;}
+    .card .links{gap:8px;}
+    .card a.maplink, .card a.tellink{font-size:0.92rem;padding:7px 10px;}
   }
 </style>
 </head>
@@ -252,9 +298,9 @@
 </header>
 
 <div class="logibar">
-  <div class="logi-chip">✈️ <b>TW263 / TW264</b> 티웨이항공</div>
+  <div class="logi-chip">✈️ <b>TW263 / TW264</b> 티웨이항공 · <b>인천 제1여객터미널(T1)</b></div>
   <div class="logi-chip">🅿️ 인천공항 발렛 <b>7/27 08:10</b> → <b>7/30 18:20</b> (이촌동 자차 출발)</div>
-  <div class="logi-chip">🏨 <b>InterContinental Sapporo</b> · 中央区南10条西1丁目</div>
+  <div class="logi-chip">🏨 <b>인터컨티넨탈 삿포로</b> · 주오구 미나미10조니시1초메 (中央区南10条西1丁目) · ☎ 011-562-7000</div>
   <div class="logi-chip">🚗 Times 렌터카 신치토세공항 <b>7/27 14:00</b> 픽업 → <b>7/30 13:00</b> 공항 반납</div>
 </div>
 
@@ -263,6 +309,18 @@
 </div>
 
 <div id="map"></div>
+
+<div class="prep">
+  <h3>🎒 출발 전 알아두실 것</h3>
+  <ul>
+    <li><b>옷차림</b> — 삿포로 7월 말은 낮 23~25도, <b>아침·저녁엔 15~16도까지 떨어집니다.</b> 얇은 겉옷(바람막이·가디건) 꼭 챙기세요. 조잔케이 온천은 산속이라 더 서늘합니다.</li>
+    <li><b>현금</b> — 카드 안 되는 곳이 있습니다(오타루 소바, 스아게+ 스프카레, 토리텐 야키토리). <b>1인당 2~3만엔</b> 정도 현금을 준비하시면 넉넉합니다.</li>
+    <li><b>인천공항</b> — 티웨이항공은 <b>제1여객터미널(T1)</b>입니다. 발렛 맡기실 때 터미널 확인하세요.</li>
+    <li><b>시차 없음</b> — 한국과 일본 시간이 같습니다. 시계 안 바꾸셔도 됩니다.</li>
+    <li><b>온천 준비물</b> — 시카노유는 수건·샴푸·바디워시 전부 무료로 비치되어 있습니다. <b>갈아입을 속옷만</b> 챙기시면 됩니다.</li>
+    <li><b>렌터카</b> — 일본은 우리와 반대인 <b>좌측통행</b>입니다. 운전석도 오른쪽이에요.</li>
+  </ul>
+</div>
 
 <div class="tabs" id="tabs"></div>
 
@@ -285,12 +343,13 @@ const DAYS = [
       { period:"Morning", time:"08:10", icon:"🅿️", title:"인천공항 발렛파킹 시작", meta:"이촌동 자택 출발(자차)", desc:"발렛 예약 08:10 ~ 7/30 18:20" },
       { period:"Morning", time:"10:10", icon:"🛫", title:"TW263 탑승", meta:"인천 10:10 → 신치토세 13:00", desc:"티웨이항공 TW263편 · 비행 약 2시간 50분 (e-티켓 시간 재확인)" },
       { period:"Afternoon", time:"14:00", icon:"🚗", title:"Times 렌터카 픽업", meta:"신치토세공항 · 다음 이동 예상 55~60분", desc:"현지시간 14:00 픽업, 7/30 13:00 신치토세공항에서 반납(시내 반납 아님). 공항→호텔 약 50km, 차로 약 55~60분", lat:42.7752, lng:141.6926, q:"Times Car Rental New Chitose Airport" },
-      { period:"Afternoon", time:"15:00", icon:"🏨", title:"인터컨티넨탈 삿포로 체크인 & 주차", meta:"中央区南10条西1丁目", desc:"약 15:00 도착 예상, 렌터카는 호텔 주차장에 세워두고 이후 일정은 택시·도보로 이동", lat:43.0479392, lng:141.3569655, q:"InterContinental Sapporo", mapUrl:"https://www.google.com/maps/place/InterContinental+Sapporo+by+IHG/@43.0479392,141.3569655,17z/data=!3m1!4b1!4m9!3m8!1s0x5f0b2bdc7ddcdfd7:0x591fe724804591dc!5m2!4m1!1i2!8m2!3d43.0479392!4d141.3569655!16s%2Fg%2F11x6mtq3nr" },
-      { period:"Afternoon", time:"15:30", icon:"🍣", title:"토리톤 스시 (Sushi Toriton Toyohira)", meta:"예약 불가 · 회전초밥 · 호텔에서 택시로 약 10분", desc:"짐 두고 택시로 이동 (도보로는 약 25분 거리). 웨이팅 감안. 원조 인기 회전초밥 · 토요히라점 · 💳카드 가능(VISA/Master/JCB/AMEX/Diners/UnionPay) + 교통카드 등", lat:43.0506336, lng:141.3721361, q:"Sushi Toriton Toyohira", mapUrl:"https://www.google.com/maps/place/Sushi+Toriton+Toyohira/@43.0506375,141.3695612,17z/data=!3m1!4b1!4m6!3m5!1s0x5f0b2a2ca36c0713:0x265e10bf0897307!8m2!3d43.0506336!4d141.3721361!16s%2Fg%2F1tdnf11s!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDcyMi4wIKXMDSoASAFQAw%3D%3D" },
+      { period:"Afternoon", time:"15:00", icon:"🏨", title:"인터컨티넨탈 삿포로 체크인 & 주차", meta:"中央区南10条西1丁目", desc:"약 15:00 도착 예상, 렌터카는 호텔 주차장에 세워두고 이후 일정은 택시·도보로 이동", lat:43.0479392, lng:141.3569655, tel:"011-562-7000", q:"InterContinental Sapporo", mapUrl:"https://www.google.com/maps/place/InterContinental+Sapporo+by+IHG/@43.0479392,141.3569655,17z/data=!3m1!4b1!4m9!3m8!1s0x5f0b2bdc7ddcdfd7:0x591fe724804591dc!5m2!4m1!1i2!8m2!3d43.0479392!4d141.3569655!16s%2Fg%2F11x6mtq3nr" },
+      { period:"Afternoon", time:"15:30", icon:"🍣", title:"토리톤 스시 (Sushi Toriton Toyohira)", meta:"예약 불가 · 회전초밥 · 호텔에서 택시로 약 10분", desc:"짐 두고 택시로 이동 (도보로는 약 25분 거리). 웨이팅 감안. 원조 인기 회전초밥 · 토요히라점 · 💳카드 가능(VISA/Master/JCB/AMEX/Diners/UnionPay) + 교통카드 등", lat:43.0506336, lng:141.3721361, tel:"011-817-7788", q:"Sushi Toriton Toyohira", mapUrl:"https://www.google.com/maps/place/Sushi+Toriton+Toyohira/@43.0506375,141.3695612,17z/data=!3m1!4b1!4m6!3m5!1s0x5f0b2a2ca36c0713:0x265e10bf0897307!8m2!3d43.0506336!4d141.3721361!16s%2Fg%2F1tdnf11s!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDcyMi4wIKXMDSoASAFQAw%3D%3D" },
       { period:"Afternoon", time:"17:00", icon:"🛍️", title:"도심 쇼핑", meta:"스스키노 · 다누키코지 · 토리톤에서 택시로 약 10분", desc:"식사 후 도심 이동, 가벼운 쇼핑 (차는 계속 호텔에 주차)", lat:43.0567, lng:141.3536, q:"Tanukikoji Shopping Street Sapporo" },
-      { period:"Evening", time:"19:00", icon:"🍢", title:"야키토리 저녁 — 멘메 (Menme)", meta:"옵션 1 / 3 · 도심에서 도보 5~10분", desc:"오도리 공원 근처 야키토리 후보 1 · 💳카드 가능(VISA/Master/JCB/AMEX/Diners), 전자화폐·QR 불가", lat:43.0565247, lng:141.3493606, mapUrl:"https://www.google.com/maps/place/Menme/@43.0539367,141.3517145,16.55z/data=!3m1!5s0x5f0b298689c3d333:0xe9dd801e6d11dab3!4m6!3m5!1s0x5f0b29852240474b:0x5e9b61e7a4edf3e!8m2!3d43.0565247!4d141.3493606!16s%2Fg%2F1tf8sx6g" },
-      { period:"Evening", time:"19:00", icon:"🍢", title:"야키토리 저녁 — Bird Watching", meta:"옵션 2 / 3 · 도심에서 도보 5~10분", desc:"오도리 공원 근처 야키토리 후보 2 · 💳카드 가능(VISA/Master/JCB/AMEX/Diners), PayPay 가능", lat:43.0558104, lng:141.3514543, mapUrl:"https://www.google.com/maps/place/Bird+Watching/@43.0539367,141.3517145,16.55z/data=!3m1!5s0x5f0b298689c3d333:0xe9dd801e6d11dab3!4m6!3m5!1s0x5f0b298454c8ccf1:0x6f8fbe3a78ae6086!8m2!3d43.0558104!4d141.3514543!16s%2Fg%2F11b6hmbq2q" },
-      { period:"Evening", time:"19:00", icon:"🍢", title:"야키토리 저녁 — 토리텐 (Toriten)", meta:"옵션 3 / 3 · 도심에서 도보 5~10분", desc:"오도리 공원 근처 야키토리 후보 3 · 세 곳 중 현장 웨이팅 짧은 곳으로 결정 · 💵현금 결제만 가능", lat:43.0538636, lng:141.354482, mapUrl:"https://www.google.com/maps/place/Toriten/@43.0539367,141.3517145,16.55z/data=!3m1!5s0x5f0b298689c3d333:0xe9dd801e6d11dab3!4m6!3m5!1s0x5f0b29865fd425b7:0x408c0050dac414e!8m2!3d43.0538636!4d141.354482!16s%2Fg%2F12qgvhzhz" }
+      { period:"Evening", time:"19:00", icon:"🍢", title:"야키토리 — 멘메 (めんめ)", meta:"후보 A · 도심에서 도보 5~10분", desc:"로바타야키(화로구이) 노포. 해산물도 좋음 · 💳카드 가능(VISA/Master/JCB/AMEX/Diners), 전자화폐·QR 불가", tel:"011-241-6810", lat:43.0565247, lng:141.3493606, mapUrl:"https://www.google.com/maps/place/Menme/@43.0539367,141.3517145,16.55z/data=!3m1!5s0x5f0b298689c3d333:0xe9dd801e6d11dab3!4m6!3m5!1s0x5f0b29852240474b:0x5e9b61e7a4edf3e!8m2!3d43.0565247!4d141.3493606!16s%2Fg%2F1tf8sx6g",
+        pickNote:"🍢 저녁은 아래 세 곳 중 <u>한 곳만</u> 갑니다 — 현장 웨이팅 보고 결정하세요" },
+      { period:"Evening", time:"19:00", icon:"🍢", title:"야키토리 — Bird Watching", meta:"후보 B · 도심에서 도보 5~10분", desc:"야키토리 + 내추럴와인. 스스키노역 도보 2분 · 💳카드 가능(VISA/Master/JCB/AMEX/Diners), PayPay 가능", tel:"050-1720-7159", lat:43.0558104, lng:141.3514543, mapUrl:"https://www.google.com/maps/place/Bird+Watching/@43.0539367,141.3517145,16.55z/data=!3m1!5s0x5f0b298689c3d333:0xe9dd801e6d11dab3!4m6!3m5!1s0x5f0b298454c8ccf1:0x6f8fbe3a78ae6086!8m2!3d43.0558104!4d141.3514543!16s%2Fg%2F11b6hmbq2q" },
+      { period:"Evening", time:"19:00", icon:"🍢", title:"야키토리 — 토리텐 (鳥てん)", meta:"후보 C · 도심에서 도보 5~10분", desc:"노부부가 운영하는 소규모 현지인 맛집(구글 4.8★) · 💵현금 결제만 가능", tel:"011-518-4739", lat:43.0538636, lng:141.354482, mapUrl:"https://www.google.com/maps/place/Toriten/@43.0539367,141.3517145,16.55z/data=!3m1!5s0x5f0b298689c3d333:0xe9dd801e6d11dab3!4m6!3m5!1s0x5f0b29865fd425b7:0x408c0050dac414e!8m2!3d43.0538636!4d141.354482!16s%2Fg%2F12qgvhzhz" }
     ]
   },
   {
@@ -301,11 +360,11 @@ const DAYS = [
     summary: "차로 오타루 이동 → 소바 점심 → 삿포로 복귀 후 쇼핑 → 징기스칸(히츠지) 저녁 19:30",
     routeFrom: "InterContinental Sapporo", routeTo: "Otaru Canal",
     items: [
-      { period:"Morning", time:"10:00", icon:"🚗", title:"오타루로 출발", meta:"차로 이동 · 예상 약 45분", desc:"호텔 주차장에서 차량 픽업 후 출발. 오타루까지 약 40km, 운하·유리공방 등 산책", lat:43.0479392, lng:141.3569655, q:"InterContinental Sapporo", mapUrl:"https://www.google.com/maps/place/InterContinental+Sapporo+by+IHG/@43.0479392,141.3569655,17z/data=!3m1!4b1!4m9!3m8!1s0x5f0b2bdc7ddcdfd7:0x591fe724804591dc!5m2!4m1!1i2!8m2!3d43.0479392!4d141.3569655!16s%2Fg%2F11x6mtq3nr" },
-      { period:"Afternoon", time:"12:00", icon:"🍜", title:"오타루 소바 점심 — 一福そば店", meta:"소바 or 다른 메뉴 · 130년 전통", desc:"오타루역 도보 10분, 스시야도리 근처 소바 노포 — 현장 확인 · ⚠️카드·전자화폐 불가, PayPay 등 QR결제만 가능 → 현금 준비 필수", lat:43.1966, lng:141.0032, q:"一福そば店 小樽" },
+      { period:"Morning", time:"10:00", icon:"🚗", title:"오타루로 출발", meta:"차로 이동 · 예상 약 45분", desc:"호텔 주차장에서 차량 픽업 후 출발. 오타루까지 약 40km, 운하·유리공방 등 산책", lat:43.0479392, lng:141.3569655, tel:"011-562-7000", q:"InterContinental Sapporo", mapUrl:"https://www.google.com/maps/place/InterContinental+Sapporo+by+IHG/@43.0479392,141.3569655,17z/data=!3m1!4b1!4m9!3m8!1s0x5f0b2bdc7ddcdfd7:0x591fe724804591dc!5m2!4m1!1i2!8m2!3d43.0479392!4d141.3569655!16s%2Fg%2F11x6mtq3nr" },
+      { period:"Afternoon", time:"12:00", icon:"🍜", title:"오타루 소바 점심 — 一福そば店", meta:"소바 or 다른 메뉴 · 130년 전통", desc:"오타루역 도보 10분, 스시야도리 근처 소바 노포 — 현장 확인 · ⚠️카드·전자화폐 불가, PayPay 등 QR결제만 가능 → 현금 준비 필수", tel:"0134-22-1043", lat:43.1966, lng:141.0032, q:"一福そば店 小樽" },
       { period:"Afternoon", time:"14:00", icon:"🚶", title:"오타루 운하 산책", meta:"관광", desc:"오타루 시내 자유 관광", lat:43.1985, lng:141.0022, q:"Otaru Canal" },
       { period:"Evening", time:"17:00", icon:"🚗", title:"삿포로 복귀 & 호텔 주차", meta:"차로 이동 · 예상 약 45분", desc:"호텔 도착 후 차량은 주차장에 반납, 이후 저녁은 도보·택시로 이동" },
-      { period:"Evening", time:"19:30", icon:"🍖", title:"징기스칸 저녁 — 히츠지(羊)", meta:"예약 19:30 · 호텔에서 도보 약 10분", desc:"양고기 징기스칸 전문점 · 💳카드·전자화폐·QR결제 모두 가능", lat:43.0537584, lng:141.3547043, q:"Hitsuji Sapporo Jingisukan", mapUrl:"https://www.google.com/maps/place/Hitsuji/@43.049441,141.3496779,15.08z/data=!3m1!5s0x5f0b298689c3d333:0xe9dd801e6d11dab3!4m7!3m6!1s0x5f0b298689c45555:0x1d061d5f5edc6adf!8m2!3d43.0537584!4d141.3547043" }
+      { period:"Evening", time:"19:30", icon:"🍖", title:"징기스칸 저녁 — 히츠지(羊)", meta:"예약 19:30 · 호텔에서 도보 약 10분", desc:"양고기 징기스칸 전문점 · 💳카드·전자화폐·QR결제 모두 가능", lat:43.0537584, lng:141.3547043, tel:"011-522-5323", q:"Hitsuji Sapporo Jingisukan", mapUrl:"https://www.google.com/maps/place/Hitsuji/@43.049441,141.3496779,15.08z/data=!3m1!5s0x5f0b298689c3d333:0xe9dd801e6d11dab3!4m7!3m6!1s0x5f0b298689c45555:0x1d061d5f5edc6adf!8m2!3d43.0537584!4d141.3547043" }
     ]
   },
   {
@@ -316,13 +375,13 @@ const DAYS = [
     summary: "삿포로에서 스프카레 점심 → 조잔케이 온천 이동(후타미 즈리바시 산책 겸) → 시카노유 입욕 → 삿포로 복귀 후 게 요리 저녁 20:15",
     routeFrom: "Soup Curry Suage+ Sapporo", routeTo: "Hotel Shika no Yu Jozankei",
     items: [
-      { period:"Afternoon", time:"12:00", icon:"🍛", title:"스아게 플러스 (Suage+)", meta:"스프카레 본점 · 호텔에서 도보 약 12분", desc:"스스키노역 2번 출구 인근. 걸어서 이동 (차는 호텔에 주차 유지) · ⚠️카드·전자화폐 불가, PayPay/Alipay만 가능 → 현금 준비", lat:43.0556, lng:141.3536, q:"Soup Curry Suage+ Sapporo", mapUrl:"https://maps.app.goo.gl/Eie4RZdAyrHAGKdb8" },
-      { period:"Afternoon", time:"13:15", icon:"🚶", title:"호텔 복귀 & 차량 픽업", meta:"도보 약 12분", desc:"점심 후 호텔로 돌아와 주차장에서 렌터카 픽업", lat:43.0479392, lng:141.3569655, q:"InterContinental Sapporo", mapUrl:"https://www.google.com/maps/place/InterContinental+Sapporo+by+IHG/@43.0479392,141.3569655,17z/data=!3m1!4b1!4m9!3m8!1s0x5f0b2bdc7ddcdfd7:0x591fe724804591dc!5m2!4m1!1i2!8m2!3d43.0479392!4d141.3569655!16s%2Fg%2F11x6mtq3nr" },
-      { period:"Afternoon", time:"13:30", icon:"🚗", title:"조잔케이 온천으로 이동", meta:"차로 이동 · 예상 약 50분", desc:"주차장 200대 무료(정면 주차장, 만차시 인근 주차장 안내). 약 30km, 산길 포함", lat:42.9657548, lng:141.1630392, q:"Hotel Shika no Yu Jozankei", mapUrl:"https://www.google.com/maps/place/Hotel+Shika+no+Yu/@42.965752,141.163098,16z/data=!4m9!3m8!1s0x5f0ad222713b40f7:0xd5a743b58e129a6f!5m2!4m1!1i2!8m2!3d42.9657548!4d141.1630392!16s%2Fg%2F11ddxl200l" },
+      { period:"Afternoon", time:"12:00", icon:"🍛", title:"스아게 플러스 (Suage+)", meta:"스프카레 본점 · 호텔에서 도보 약 12분", desc:"스스키노역 2번 출구 인근. 걸어서 이동 (차는 호텔에 주차 유지) · ⚠️카드·전자화폐 불가, PayPay/Alipay만 가능 → 현금 준비", lat:43.0556, lng:141.3536, tel:"011-233-2911", q:"Soup Curry Suage+ Sapporo", mapUrl:"https://maps.app.goo.gl/Eie4RZdAyrHAGKdb8" },
+      { period:"Afternoon", time:"13:15", icon:"🚶", title:"호텔 복귀 & 차량 픽업", meta:"도보 약 12분", desc:"점심 후 호텔로 돌아와 주차장에서 렌터카 픽업", lat:43.0479392, lng:141.3569655, tel:"011-562-7000", q:"InterContinental Sapporo", mapUrl:"https://www.google.com/maps/place/InterContinental+Sapporo+by+IHG/@43.0479392,141.3569655,17z/data=!3m1!4b1!4m9!3m8!1s0x5f0b2bdc7ddcdfd7:0x591fe724804591dc!5m2!4m1!1i2!8m2!3d43.0479392!4d141.3569655!16s%2Fg%2F11x6mtq3nr" },
+      { period:"Afternoon", time:"13:30", icon:"🚗", title:"조잔케이 온천으로 이동", meta:"차로 이동 · 예상 약 50분", desc:"주차장 200대 무료(정면 주차장, 만차시 인근 주차장 안내). 약 30km, 산길 포함", lat:42.9657548, lng:141.1630392, tel:"011-598-2311", q:"Hotel Shika no Yu Jozankei", mapUrl:"https://www.google.com/maps/place/Hotel+Shika+no+Yu/@42.965752,141.163098,16z/data=!4m9!3m8!1s0x5f0ad222713b40f7:0xd5a743b58e129a6f!5m2!4m1!1i2!8m2!3d42.9657548!4d141.1630392!16s%2Fg%2F11ddxl200l" },
       { period:"Afternoon", time:"14:20", icon:"🌉", title:"후타미 즈리바시 산책 (선택)", meta:"온천 도보 5~10분 · 왕복 20~30분", desc:"조잔케이 상징인 빨간 현수교. 다리 위에서 카파부치(渓谷) 조망, 건너편 산책로도 있음. 시간 여유 보고 생략 가능", lat:42.9684, lng:141.1595, q:"Futami Suspension Bridge Jozankei" },
-      { period:"Afternoon", time:"14:45", icon:"♨️", title:"온천욕 — 시카노유", meta:"13:00~21:00 (접수마감 20:00) · 성인 1,500엔/초등생 750엔", desc:"수건·샴푸·린스·바디워시 비치(무료) — 몸만 가면 됨. 프론트에서 당일입욕 접수 후 지하1층 대욕장(실내탕+노천탕) 이용. ⚠️매주 월·목은 청소로 14시부터 접수(수요일인 오늘은 해당없음) · 💳카드 결제 가능", lat:42.9657548, lng:141.1630392, q:"Hotel Shika no Yu Jozankei", mapUrl:"https://www.google.com/maps/place/Hotel+Shika+no+Yu/@42.965752,141.163098,16z/data=!4m9!3m8!1s0x5f0ad222713b40f7:0xd5a743b58e129a6f!5m2!4m1!1i2!8m2!3d42.9657548!4d141.1630392!16s%2Fg%2F11ddxl200l" },
+      { period:"Afternoon", time:"14:45", icon:"♨️", title:"온천욕 — 시카노유", meta:"13:00~21:00 (접수마감 20:00) · 성인 1,500엔/초등생 750엔", desc:"수건·샴푸·린스·바디워시 비치(무료) — 몸만 가면 됨. 프론트에서 당일입욕 접수 후 지하1층 대욕장(실내탕+노천탕) 이용. ⚠️매주 월·목은 청소로 14시부터 접수(수요일인 오늘은 해당없음) · 💳카드 결제 가능", lat:42.9657548, lng:141.1630392, tel:"011-598-2311", q:"Hotel Shika no Yu Jozankei", mapUrl:"https://www.google.com/maps/place/Hotel+Shika+no+Yu/@42.965752,141.163098,16z/data=!4m9!3m8!1s0x5f0ad222713b40f7:0xd5a743b58e129a6f!5m2!4m1!1i2!8m2!3d42.9657548!4d141.1630392!16s%2Fg%2F11ddxl200l" },
       { period:"Evening", time:"17:00", icon:"🚗", title:"삿포로 복귀 & 호텔 주차", meta:"차로 이동 · 예상 약 50분", desc:"호텔 도착 후 차량은 주차장에 반납, 저녁은 도보·택시로 이동" },
-      { period:"Night", time:"20:15", icon:"🦀", title:"게 요리 저녁 — 스스키노 카니이치", meta:"예약 20:15 · 호텔에서 도보 약 12분", desc:"게 요리 전문점 · 💳카드만 가능(전자화폐·QR 불가)", lat:43.0552146, lng:141.3547942, q:"Kaniichi Susukino Sapporo", mapUrl:"https://www.google.com/maps/place/%E3%81%99%E3%81%99%E3%81%8D%E3%81%AE+%E8%9F%B9%E4%B8%80/@43.0552152,141.3500306,17z/data=!3m1!5s0x5f0b298418697b6f:0x6afb6e3022dc644f!4m7!3m6!1s0x5f0b29003a2ce711:0x778b3d1397a81602!8m2!3d43.0552146!4d141.3547942" }
+      { period:"Night", time:"20:15", icon:"🦀", title:"게 요리 저녁 — 스스키노 카니이치", meta:"예약 20:15 · 호텔에서 도보 약 12분", desc:"게 요리 전문점 · 💳카드만 가능(전자화폐·QR 불가)", lat:43.0552146, lng:141.3547942, tel:"011-215-0910", q:"Kaniichi Susukino Sapporo", mapUrl:"https://www.google.com/maps/place/%E3%81%99%E3%81%99%E3%81%8D%E3%81%AE+%E8%9F%B9%E4%B8%80/@43.0552152,141.3500306,17z/data=!3m1!5s0x5f0b298418697b6f:0x6afb6e3022dc644f!4m7!3m6!1s0x5f0b29003a2ce711:0x778b3d1397a81602!8m2!3d43.0552146!4d141.3547942" }
     ]
   },
   {
@@ -330,14 +389,17 @@ const DAYS = [
     label: "4일차",
     date: "7/30(목)",
     title: "4일차: 귀국",
-    summary: "호텔에서 공항으로 이동 → 렌터카 공항 반납 → 새우라멘 → 신치토세 출발 → 인천 도착",
+    summary: "체크아웃 → 렌터카 11:30 공항 반납 → 체크인 → 새우라멘 → TW264 출발 → 인천 도착",
     routeFrom: "InterContinental Sapporo", routeTo: "New Chitose Airport",
     items: [
-      { period:"Morning", time:"12:00", icon:"🚗", title:"신치토세공항으로 출발", meta:"차로 이동 · 예상 약 55~60분", desc:"13:00 반납에 여유있게 맞추려면 정오 전후 출발 권장", lat:43.0479392, lng:141.3569655, q:"InterContinental Sapporo", mapUrl:"https://www.google.com/maps/place/InterContinental+Sapporo+by+IHG/@43.0479392,141.3569655,17z/data=!3m1!4b1!4m9!3m8!1s0x5f0b2bdc7ddcdfd7:0x591fe724804591dc!5m2!4m1!1i2!8m2!3d43.0479392!4d141.3569655!16s%2Fg%2F11x6mtq3nr" },
-      { period:"Afternoon", time:"13:00", icon:"🚗", title:"Times 렌터카 공항 반납", meta:"신치토세공항", desc:"공항에서 바로 반납 (시내 반납 아님)", lat:42.7752, lng:141.6926, q:"Times Car Rental New Chitose Airport" },
-      { period:"Afternoon", time:"—", icon:"🍤", title:"새우라멘 — 에비소바 이치겐", meta:"신치토세공항 3F", desc:"공항 국내선 3F, 대기 있을 수 있음 · 💳카드·전자화폐·QR결제 모두 가능", lat:42.7752, lng:141.6926, q:"えびそば一幻 新千歳空港店" },
-      { period:"Afternoon", time:"14:00", icon:"🛬", title:"TW264 탑승", meta:"신치토세 14시대 → 인천 17시대 도착", desc:"티웨이항공 TW264편 · 비행 약 3시간 (e-티켓 시간 재확인)" },
-      { period:"Evening", time:"18:20", icon:"🅿️", title:"인천공항 발렛파킹 종료", meta:"자차 픽업 후 귀가", desc:"이촌동으로 복귀" }
+      { period:"Morning", time:"10:00", icon:"🏨", title:"호텔 체크아웃 & 짐 싣기", meta:"인터컨티넨탈 삿포로", desc:"주차장에서 렌터카 픽업, 짐 싣고 공항으로 출발 준비", lat:43.0479392, lng:141.3569655, tel:"011-562-7000", q:"InterContinental Sapporo", mapUrl:"https://www.google.com/maps/place/InterContinental+Sapporo+by+IHG/@43.0479392,141.3569655,17z/data=!3m1!4b1!4m9!3m8!1s0x5f0b2bdc7ddcdfd7:0x591fe724804591dc!5m2!4m1!1i2!8m2!3d43.0479392!4d141.3569655!16s%2Fg%2F11x6mtq3nr" },
+      { period:"Morning", time:"10:20", icon:"🚗", title:"신치토세공항으로 출발", meta:"차로 이동 · 예상 약 55~60분", desc:"약 50km. 11:30 반납에 맞추려면 10:20~10:30 출발" },
+      { period:"Morning", time:"11:30", icon:"🚗", title:"Times 렌터카 공항 반납", meta:"신치토세공항 · 셔틀로 터미널 10~15분", desc:"공항에서 바로 반납(시내 반납 아님). 반납 후 셔틀버스로 터미널 이동", lat:42.7752, lng:141.6926, q:"Times Car Rental New Chitose Airport" },
+      { period:"Afternoon", time:"12:00", icon:"🎫", title:"국제선 체크인 & 수하물 위탁", meta:"⚠️ 라멘 먹기 전에 먼저 하세요", desc:"체크인 마감은 보통 출발 60분 전(13:30경). 짐부터 부치고 홀가분하게 라멘 드시는 순서가 안전합니다" },
+      { period:"Afternoon", time:"12:30", icon:"🍤", title:"새우라멘 — 에비소바 이치겐", meta:"국내선 터미널 3F 홋카이도 라멘도장", desc:"⚠️보안검색 통과 전(면세구역 밖)에 있습니다 — 반드시 출국심사 전에 드세요. 대기 30분~1시간 가능 · 💳카드·전자화폐·QR결제 모두 가능", tel:"0123-45-6755", lat:42.7752, lng:141.6926, q:"えびそば一幻 新千歳空港店" },
+      { period:"Afternoon", time:"13:40", icon:"🛂", title:"출국심사 & 탑승게이트", meta:"국제선 터미널", desc:"라멘 마치고 국제선 터미널로 이동해 보안검색·출국심사" },
+      { period:"Afternoon", time:"14:30", icon:"🛬", title:"TW264 출발", meta:"신치토세 14:30 → 인천 17:40 도착 (예정)", desc:"티웨이항공 TW264편 · 비행 약 3시간 (정확한 시각은 e-티켓 확인)" },
+      { period:"Evening", time:"18:30", icon:"🅿️", title:"인천공항 발렛 차량 인수 & 귀가", meta:"⚠️ 발렛 예약은 18:20 종료", desc:"도착 17:40 + 입국심사·수하물 40~60분 = 실제 차량 인수는 18:30~19:00 예상. 발렛 업체에 종료시간 여유 확인 필요" }
     ]
   }
 ];
@@ -437,6 +499,9 @@ function renderDay(dayId){
     if(hasPin) cardStopNo++;
     const cardId = hasPin ? `id="stop-${cardStopNo}"` : "";
     const pinBadge = hasPin ? `<span class="pin-badge">${cardStopNo}</span>` : "";
+    if(item.pickNote){
+      html += `<div class="pick-note">${item.pickNote}</div>`;
+    }
     html += `
       <div class="card" ${cardId}>
         <div class="time">${item.time}</div>
@@ -445,7 +510,10 @@ function renderDay(dayId){
           <div class="title">${pinBadge}${item.title}</div>
           ${item.meta ? `<div class="meta">${item.meta}</div>` : ""}
           <div class="desc">${item.desc}</div>
-          ${link ? `<div class="links"><a class="maplink" href="${link}" target="_blank" rel="noopener">📍 구글맵 내비 열기</a></div>` : ""}
+          ${(link || item.tel) ? `<div class="links">
+            ${link ? `<a class="maplink" href="${link}" target="_blank" rel="noopener">📍 지도 열기</a>` : ""}
+            ${item.tel ? `<a class="tellink" href="tel:${item.tel.replace(/-/g,'')}">☎ ${item.tel}</a>` : ""}
+          </div>` : ""}
         </div>
       </div>
     `;
