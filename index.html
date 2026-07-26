@@ -195,6 +195,7 @@
 <div class="logibar">
   <div class="logi-chip">✈️ <b>TW263 / TW264</b> 티웨이항공</div>
   <div class="logi-chip">🅿️ 인천공항 발렛 <b>7/27 08:10</b> → <b>7/30 18:20</b> (이촌동 자차 출발)</div>
+  <div class="logi-chip">🏨 <b>InterContinental Sapporo</b> · 中央区南10条西1丁目</div>
   <div class="logi-chip">🚗 Times 렌터카 삿포로 <b>7/27 14:00</b> 픽업 → <b>7/30 13:00</b> 반납</div>
 </div>
 
@@ -215,16 +216,18 @@ const DAYS = [
     date: "7/27(월)",
     title: "1일차: 삿포로 도착 & 초밥·쇼핑",
     summary: "인천 출발 → 신치토세 도착 후 렌터카 픽업 → 호텔 체크인 → 토리톤 초밥 → 도심 쇼핑 → 야키토리 저녁",
+    routeFrom: "New Chitose Airport", routeTo: "InterContinental Sapporo",
     items: [
+      { period:"Morning", time:"07:00", icon:"🚙", title:"이촌동 자택 출발", meta:"자차 이동 · 예상 소요 55~70분", desc:"인천공항까지 교통상황에 따라 55분~1시간 30분. 발렛 예약(08:10) 여유있게 도착하려면 07:00~07:10 출발 권장" },
       { period:"Morning", time:"08:10", icon:"🅿️", title:"인천공항 발렛파킹 시작", meta:"이촌동 자택 출발(자차)", desc:"발렛 예약 08:10 ~ 7/30 18:20" },
       { period:"Morning", time:"—", icon:"🛫", title:"TW263 탑승", meta:"인천 → 신치토세", desc:"티웨이항공 TW263편" },
-      { period:"Afternoon", time:"14:00", icon:"🚗", title:"Times 렌터카 픽업", meta:"신치토세공항", desc:"현지시간 14:00 픽업, 7/30 13:00 삿포로 시내 반납", lat:42.7752, lng:141.6926, q:"Times Car Rental New Chitose Airport" },
-      { period:"Afternoon", time:"14:30", icon:"🏨", title:"호텔 체크인 & 짐 정리", meta:"스스키노 인근", desc:"약 14:30 도착, 짐 두고 바로 초밥집으로 이동", lat:43.0554, lng:141.3533, q:"Susukino Sapporo" },
-      { period:"Afternoon", time:"15:00", icon:"🍣", title:"토리톤 스시", meta:"예약 불가 · 회전초밥", desc:"웨이팅 감안하고 이동. 원조 인기 회전초밥", lat:43.0682, lng:141.3373, q:"回転寿し トリトン 円山店 札幌" },
-      { period:"Afternoon", time:"16:30", icon:"🛍️", title:"도심 쇼핑", meta:"스스키노 · 다누키코지", desc:"식사 후 도심 이동, 가벼운 쇼핑", lat:43.0567, lng:141.3536, q:"Tanukikoji Shopping Street Sapporo" },
-      { period:"Evening", time:"19:00", icon:"🍢", title:"야키토리 저녁 — 멘메 (Menme)", meta:"옵션 1 / 3", desc:"오도리 공원 근처 야키토리 후보 1", lat:43.0565247, lng:141.3493606, q:"Menme Sapporo yakitori" },
-      { period:"Evening", time:"19:00", icon:"🍢", title:"야키토리 저녁 — Bird Watching", meta:"옵션 2 / 3", desc:"오도리 공원 근처 야키토리 후보 2", lat:43.0558104, lng:141.3514543, q:"Bird Watching Sapporo yakitori" },
-      { period:"Evening", time:"19:00", icon:"🍢", title:"야키토리 저녁 — 토리텐 (Toriten)", meta:"옵션 3 / 3", desc:"오도리 공원 근처 야키토리 후보 3 · 세 곳 중 현장 웨이팅 짧은 곳으로 결정", lat:43.0538636, lng:141.354482, q:"Toriten Sapporo yakitori" }
+      { period:"Afternoon", time:"14:00", icon:"🚗", title:"Times 렌터카 픽업", meta:"신치토세공항 · 다음 이동 예상 55~60분", desc:"현지시간 14:00 픽업, 7/30 13:00 삿포로 시내 반납. 공항→호텔 약 50km, 차로 약 55~60분", lat:42.7752, lng:141.6926, q:"Times Car Rental New Chitose Airport" },
+      { period:"Afternoon", time:"15:00", icon:"🏨", title:"인터컨티넨탈 삿포로 체크인 & 짐 정리", meta:"中央区南10条西1丁目", desc:"약 15:00 도착 예상, 짐 두고 바로 초밥집으로 이동", lat:43.0479392, lng:141.3569655, q:"InterContinental Sapporo" },
+      { period:"Afternoon", time:"15:30", icon:"🍣", title:"토리톤 스시", meta:"예약 불가 · 회전초밥 · 호텔에서 차로 약 15분", desc:"웨이팅 감안하고 이동. 원조 인기 회전초밥", lat:43.0682, lng:141.3373, q:"回転寿し トリトン 円山店 札幌" },
+      { period:"Afternoon", time:"17:00", icon:"🛍️", title:"도심 쇼핑", meta:"스스키노 · 다누키코지 · 토리톤에서 차로 약 15분", desc:"식사 후 도심 이동, 가벼운 쇼핑", lat:43.0567, lng:141.3536, q:"Tanukikoji Shopping Street Sapporo" },
+      { period:"Evening", time:"19:00", icon:"🍢", title:"야키토리 저녁 — 멘메 (Menme)", meta:"옵션 1 / 3 · 도심에서 도보 5~10분", desc:"오도리 공원 근처 야키토리 후보 1", lat:43.0565247, lng:141.3493606, q:"Menme Sapporo yakitori" },
+      { period:"Evening", time:"19:00", icon:"🍢", title:"야키토리 저녁 — Bird Watching", meta:"옵션 2 / 3 · 도심에서 도보 5~10분", desc:"오도리 공원 근처 야키토리 후보 2", lat:43.0558104, lng:141.3514543, q:"Bird Watching Sapporo yakitori" },
+      { period:"Evening", time:"19:00", icon:"🍢", title:"야키토리 저녁 — 토리텐 (Toriten)", meta:"옵션 3 / 3 · 도심에서 도보 5~10분", desc:"오도리 공원 근처 야키토리 후보 3 · 세 곳 중 현장 웨이팅 짧은 곳으로 결정", lat:43.0538636, lng:141.354482, q:"Toriten Sapporo yakitori" }
     ]
   },
   {
@@ -233,12 +236,12 @@ const DAYS = [
     date: "7/28(화)",
     title: "2일차: 오타루 당일치기",
     summary: "차로 오타루 이동 → 소바 점심 → 삿포로 복귀 후 쇼핑 → 징기스칸(히츠지) 저녁 19:30",
-    routeFrom: "Susukino Sapporo", routeTo: "Otaru Canal",
+    routeFrom: "InterContinental Sapporo", routeTo: "Otaru Canal",
     items: [
-      { period:"Morning", time:"10:00", icon:"🚗", title:"오타루로 출발", meta:"차로 이동 (약 40분)", desc:"운하·유리공방 등 산책", lat:43.0554, lng:141.3533, q:"Susukino Sapporo" },
+      { period:"Morning", time:"10:00", icon:"🚗", title:"오타루로 출발", meta:"차로 이동 · 예상 약 45분", desc:"호텔에서 오타루까지 약 40km, 운하·유리공방 등 산책", lat:43.0479392, lng:141.3569655, q:"InterContinental Sapporo" },
       { period:"Afternoon", time:"12:00", icon:"🍜", title:"오타루 소바 점심", meta:"소바 or 다른 메뉴", desc:"운하 근처 소바 노포 후보(잇푸쿠 등) — 현장 확인", lat:43.1907, lng:141.3859, q:"小樽 そば 一福" },
       { period:"Afternoon", time:"14:00", icon:"🚶", title:"오타루 운하 산책", meta:"관광", desc:"오타루 시내 자유 관광", lat:43.1907, lng:141.3536+0, q:"Otaru Canal" },
-      { period:"Evening", time:"17:00", icon:"🚗", title:"삿포로 복귀", meta:"차로 이동", desc:"복귀 후 쇼핑 및 저녁 준비" },
+      { period:"Evening", time:"17:00", icon:"🚗", title:"삿포로 복귀", meta:"차로 이동 · 예상 약 45분", desc:"복귀 후 쇼핑 및 저녁 준비" },
       { period:"Evening", time:"19:30", icon:"🍖", title:"징기스칸 저녁 — 히츠지(羊)", meta:"예약 19:30", desc:"양고기 징기스칸 전문점", lat:43.0537584, lng:141.3547043, q:"Hitsuji Sapporo Jingisukan", mapUrl:"https://www.google.com/maps/place/Hitsuji/@43.049441,141.3496779,15.08z/data=!3m1!5s0x5f0b298689c3d333:0xe9dd801e6d11dab3!4m7!3m6!1s0x5f0b298689c45555:0x1d061d5f5edc6adf!8m2!3d43.0537584!4d141.3547043" }
     ]
   },
@@ -250,10 +253,10 @@ const DAYS = [
     summary: "삿포로에서 스프카레 점심 → 조잔케이 온천 이동(호텔 13시부터) → 삿포로 복귀 후 게 요리 저녁 20:15",
     routeFrom: "Susage+ Suage Plus Sapporo", routeTo: "Jozankei Onsen",
     items: [
-      { period:"Afternoon", time:"12:00", icon:"🍛", title:"스아게 플러스 (Suage+)", meta:"스프카레 본점", desc:"스스키노역 2번 출구 인근", lat:43.0556, lng:141.3536, q:"Soup Curry Suage+ Sapporo", mapUrl:"https://maps.app.goo.gl/Eie4RZdAyrHAGKdb8" },
-      { period:"Afternoon", time:"13:30", icon:"🚗", title:"조잔케이 온천으로 이동", meta:"차로 이동 (약 50분)", desc:"호텔 시카노유(定山渓 鹿の湯) 오후 1시부터 입욕 가능", lat:42.9657548, lng:141.1630392, q:"Hotel Shika no Yu Jozankei" },
+      { period:"Afternoon", time:"12:00", icon:"🍛", title:"스아게 플러스 (Suage+)", meta:"스프카레 본점 · 호텔에서 차로 약 10분", desc:"스스키노역 2번 출구 인근", lat:43.0556, lng:141.3536, q:"Soup Curry Suage+ Sapporo", mapUrl:"https://maps.app.goo.gl/Eie4RZdAyrHAGKdb8" },
+      { period:"Afternoon", time:"13:30", icon:"🚗", title:"조잔케이 온천으로 이동", meta:"차로 이동 · 예상 약 50분", desc:"호텔 시카노유(定山渓 鹿の湯) 오후 1시부터 입욕 가능. 약 30km, 산길 포함", lat:42.9657548, lng:141.1630392, q:"Hotel Shika no Yu Jozankei" },
       { period:"Afternoon", time:"14:30", icon:"♨️", title:"온천욕 — 시카노유", meta:"조잔케이 온천", desc:"온천 즐기고 휴식", lat:42.9657548, lng:141.1630392, q:"Hotel Shika no Yu Jozankei" },
-      { period:"Evening", time:"17:30", icon:"🚗", title:"삿포로 복귀", meta:"차로 이동", desc:"복귀 후 저녁 전까지 자유시간" },
+      { period:"Evening", time:"17:30", icon:"🚗", title:"삿포로 복귀", meta:"차로 이동 · 예상 약 50분", desc:"복귀 후 저녁 전까지 자유시간" },
       { period:"Night", time:"20:15", icon:"🦀", title:"게 요리 저녁 — 스스키노 카니이치", meta:"예약 20:15", desc:"게 요리 전문점", lat:43.0552146, lng:141.3547942, q:"Kaniichi Susukino Sapporo", mapUrl:"https://www.google.com/maps/place/%E3%81%99%E3%81%99%E3%81%8D%E3%81%AE+%E8%9F%B9%E4%B8%80/@43.0552152,141.3500306,17z/data=!3m1!5s0x5f0b298418697b6f:0x6afb6e3022dc644f!4m7!3m6!1s0x5f0b29003a2ce711:0x778b3d1397a81602!8m2!3d43.0552146!4d141.3547942" }
     ]
   },
@@ -265,6 +268,7 @@ const DAYS = [
     summary: "렌터카 반납 → 공항에서 새우라멘 → 신치토세 출발 → 인천 도착",
     items: [
       { period:"Morning", time:"13:00", icon:"🚗", title:"Times 렌터카 반납", meta:"삿포로 시내", desc:"반납 후 공항으로 이동" },
+      { period:"Afternoon", time:"—", icon:"🚄", title:"신치토세공항으로 이동", meta:"JR 쾌속 에어포트 · 예상 약 40분", desc:"삿포로역에서 신치토세공항까지 JR 쾌속 에어포트 이용", lat:42.7752, lng:141.6926, q:"New Chitose Airport" },
       { period:"Afternoon", time:"—", icon:"🍤", title:"새우라멘 — 에비소바 이치겐", meta:"신치토세공항 3F", desc:"공항 국내선 3F, 대기 있을 수 있음", lat:42.7752, lng:141.6926, q:"えびそば一幻 新千歳空港店" },
       { period:"Afternoon", time:"—", icon:"🛬", title:"TW264 탑승", meta:"신치토세 → 인천", desc:"티웨이항공 TW264편" },
       { period:"Evening", time:"18:20", icon:"🅿️", title:"인천공항 발렛파킹 종료", meta:"자차 픽업 후 귀가", desc:"이촌동으로 복귀" }
