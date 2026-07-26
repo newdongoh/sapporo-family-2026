@@ -177,6 +177,24 @@
     color:var(--sub);
     margin-top:4px;
   }
+  .num-pin{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:26px;height:26px;
+    border-radius:50% 50% 50% 0;
+    transform:rotate(-45deg);
+    background:var(--accent);
+    border:2px solid #fff;
+    box-shadow:0 2px 6px rgba(0,0,0,0.45);
+  }
+  .num-pin span{
+    transform:rotate(45deg);
+    color:#0b1020;
+    font-weight:800;
+    font-size:0.78rem;
+    font-family:inherit;
+  }
   footer{
     text-align:center;
     color:var(--sub);
@@ -220,7 +238,7 @@ const DAYS = [
     items: [
       { period:"Morning", time:"07:00", icon:"🚙", title:"이촌동 자택 출발", meta:"자차 이동 · 예상 소요 55~70분", desc:"인천공항까지 교통상황에 따라 55분~1시간 30분. 발렛 예약(08:10) 여유있게 도착하려면 07:00~07:10 출발 권장" },
       { period:"Morning", time:"08:10", icon:"🅿️", title:"인천공항 발렛파킹 시작", meta:"이촌동 자택 출발(자차)", desc:"발렛 예약 08:10 ~ 7/30 18:20" },
-      { period:"Morning", time:"—", icon:"🛫", title:"TW263 탑승", meta:"인천 → 신치토세", desc:"티웨이항공 TW263편" },
+      { period:"Morning", time:"10:10", icon:"🛫", title:"TW263 탑승", meta:"인천 10:10 → 신치토세 13:00", desc:"티웨이항공 TW263편 · 비행 약 2시간 50분 (e-티켓 시간 재확인)" },
       { period:"Afternoon", time:"14:00", icon:"🚗", title:"Times 렌터카 픽업", meta:"신치토세공항 · 다음 이동 예상 55~60분", desc:"현지시간 14:00 픽업, 7/30 13:00 신치토세공항에서 반납(시내 반납 아님). 공항→호텔 약 50km, 차로 약 55~60분", lat:42.7752, lng:141.6926, q:"Times Car Rental New Chitose Airport" },
       { period:"Afternoon", time:"15:00", icon:"🏨", title:"인터컨티넨탈 삿포로 체크인 & 짐 정리", meta:"中央区南10条西1丁目", desc:"약 15:00 도착 예상, 짐 두고 바로 초밥집으로 이동", lat:43.0479392, lng:141.3569655, q:"InterContinental Sapporo", mapUrl:"https://www.google.com/maps/place/InterContinental+Sapporo+by+IHG/@43.0479392,141.3569655,17z/data=!3m1!4b1!4m9!3m8!1s0x5f0b2bdc7ddcdfd7:0x591fe724804591dc!5m2!4m1!1i2!8m2!3d43.0479392!4d141.3569655!16s%2Fg%2F11x6mtq3nr" },
       { period:"Afternoon", time:"15:30", icon:"🍣", title:"토리톤 스시 (Sushi Toriton Toyohira)", meta:"예약 불가 · 회전초밥 · 호텔에서 차로 약 10분", desc:"웨이팅 감안하고 이동. 원조 인기 회전초밥 · 토요히라점", lat:43.0506336, lng:141.3721361, q:"Sushi Toriton Toyohira", mapUrl:"https://www.google.com/maps/place/Sushi+Toriton+Toyohira/@43.0506375,141.3695612,17z/data=!3m1!4b1!4m6!3m5!1s0x5f0b2a2ca36c0713:0x265e10bf0897307!8m2!3d43.0506336!4d141.3721361!16s%2Fg%2F1tdnf11s!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDcyMi4wIKXMDSoASAFQAw%3D%3D" },
@@ -239,8 +257,8 @@ const DAYS = [
     routeFrom: "InterContinental Sapporo", routeTo: "Otaru Canal",
     items: [
       { period:"Morning", time:"10:00", icon:"🚗", title:"오타루로 출발", meta:"차로 이동 · 예상 약 45분", desc:"호텔에서 오타루까지 약 40km, 운하·유리공방 등 산책", lat:43.0479392, lng:141.3569655, q:"InterContinental Sapporo", mapUrl:"https://www.google.com/maps/place/InterContinental+Sapporo+by+IHG/@43.0479392,141.3569655,17z/data=!3m1!4b1!4m9!3m8!1s0x5f0b2bdc7ddcdfd7:0x591fe724804591dc!5m2!4m1!1i2!8m2!3d43.0479392!4d141.3569655!16s%2Fg%2F11x6mtq3nr" },
-      { period:"Afternoon", time:"12:00", icon:"🍜", title:"오타루 소바 점심 — 一福そば店", meta:"소바 or 다른 메뉴 · 130년 전통", desc:"오타루역 도보 10분, 스시야도리 근처 소바 노포 — 현장 확인", lat:43.1907, lng:141.3859, q:"一福そば店 小樽" },
-      { period:"Afternoon", time:"14:00", icon:"🚶", title:"오타루 운하 산책", meta:"관광", desc:"오타루 시내 자유 관광", lat:43.1907, lng:141.3536+0, q:"Otaru Canal" },
+      { period:"Afternoon", time:"12:00", icon:"🍜", title:"오타루 소바 점심 — 一福そば店", meta:"소바 or 다른 메뉴 · 130년 전통", desc:"오타루역 도보 10분, 스시야도리 근처 소바 노포 — 현장 확인", lat:43.1966, lng:141.0032, q:"一福そば店 小樽" },
+      { period:"Afternoon", time:"14:00", icon:"🚶", title:"오타루 운하 산책", meta:"관광", desc:"오타루 시내 자유 관광", lat:43.1985, lng:141.0022, q:"Otaru Canal" },
       { period:"Evening", time:"17:00", icon:"🚗", title:"삿포로 복귀", meta:"차로 이동 · 예상 약 45분", desc:"복귀 후 쇼핑 및 저녁 준비" },
       { period:"Evening", time:"19:30", icon:"🍖", title:"징기스칸 저녁 — 히츠지(羊)", meta:"예약 19:30", desc:"양고기 징기스칸 전문점", lat:43.0537584, lng:141.3547043, q:"Hitsuji Sapporo Jingisukan", mapUrl:"https://www.google.com/maps/place/Hitsuji/@43.049441,141.3496779,15.08z/data=!3m1!5s0x5f0b298689c3d333:0xe9dd801e6d11dab3!4m7!3m6!1s0x5f0b298689c45555:0x1d061d5f5edc6adf!8m2!3d43.0537584!4d141.3547043" }
     ]
@@ -251,7 +269,7 @@ const DAYS = [
     date: "7/29(수)",
     title: "3일차: 스프카레 & 조잔케이 온천",
     summary: "삿포로에서 스프카레 점심 → 조잔케이 온천 이동(호텔 13시부터) → 삿포로 복귀 후 게 요리 저녁 20:15",
-    routeFrom: "Susage+ Suage Plus Sapporo", routeTo: "Jozankei Onsen",
+    routeFrom: "Soup Curry Suage+ Sapporo", routeTo: "Hotel Shika no Yu Jozankei",
     items: [
       { period:"Afternoon", time:"12:00", icon:"🍛", title:"스아게 플러스 (Suage+)", meta:"스프카레 본점 · 호텔에서 차로 약 10분", desc:"스스키노역 2번 출구 인근", lat:43.0556, lng:141.3536, q:"Soup Curry Suage+ Sapporo", mapUrl:"https://maps.app.goo.gl/Eie4RZdAyrHAGKdb8" },
       { period:"Afternoon", time:"13:30", icon:"🚗", title:"조잔케이 온천으로 이동", meta:"차로 이동 · 예상 약 50분", desc:"호텔 시카노유(定山渓 鹿の湯) 오후 1시부터 입욕 가능. 약 30km, 산길 포함", lat:42.9657548, lng:141.1630392, q:"Hotel Shika no Yu Jozankei", mapUrl:"https://www.google.com/maps/place/Hotel+Shika+no+Yu/@42.965752,141.163098,16z/data=!4m9!3m8!1s0x5f0ad222713b40f7:0xd5a743b58e129a6f!5m2!4m1!1i2!8m2!3d42.9657548!4d141.1630392!16s%2Fg%2F11ddxl200l" },
@@ -271,7 +289,7 @@ const DAYS = [
       { period:"Morning", time:"12:00", icon:"🚗", title:"신치토세공항으로 출발", meta:"차로 이동 · 예상 약 55~60분", desc:"13:00 반납에 여유있게 맞추려면 정오 전후 출발 권장", lat:43.0479392, lng:141.3569655, q:"InterContinental Sapporo", mapUrl:"https://www.google.com/maps/place/InterContinental+Sapporo+by+IHG/@43.0479392,141.3569655,17z/data=!3m1!4b1!4m9!3m8!1s0x5f0b2bdc7ddcdfd7:0x591fe724804591dc!5m2!4m1!1i2!8m2!3d43.0479392!4d141.3569655!16s%2Fg%2F11x6mtq3nr" },
       { period:"Afternoon", time:"13:00", icon:"🚗", title:"Times 렌터카 공항 반납", meta:"신치토세공항", desc:"공항에서 바로 반납 (시내 반납 아님)", lat:42.7752, lng:141.6926, q:"Times Car Rental New Chitose Airport" },
       { period:"Afternoon", time:"—", icon:"🍤", title:"새우라멘 — 에비소바 이치겐", meta:"신치토세공항 3F", desc:"공항 국내선 3F, 대기 있을 수 있음", lat:42.7752, lng:141.6926, q:"えびそば一幻 新千歳空港店" },
-      { period:"Afternoon", time:"—", icon:"🛬", title:"TW264 탑승", meta:"신치토세 → 인천", desc:"티웨이항공 TW264편" },
+      { period:"Afternoon", time:"14:00", icon:"🛬", title:"TW264 탑승", meta:"신치토세 14시대 → 인천 17시대 도착", desc:"티웨이항공 TW264편 · 비행 약 3시간 (e-티켓 시간 재확인)" },
       { period:"Evening", time:"18:20", icon:"🅿️", title:"인천공항 발렛파킹 종료", meta:"자차 픽업 후 귀가", desc:"이촌동으로 복귀" }
     ]
   }
@@ -284,9 +302,11 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 let markers = [];
+let routeLine = null;
 function clearMarkers(){
   markers.forEach(m => map.removeLayer(m));
   markers = [];
+  if(routeLine){ map.removeLayer(routeLine); routeLine = null; }
 }
 
 function mapLinkFor(item){
@@ -305,14 +325,32 @@ function renderDay(dayId){
   });
 
   const bounds = [];
+  const seen = {};
+  let stopNo = 0;
   day.items.forEach((item, idx) => {
     if(item.lat && item.lng){
-      const marker = L.marker([item.lat, item.lng]).addTo(map);
-      marker.bindPopup(`<b>${idx+1}. ${item.title}</b><br>${item.time !== "—" ? item.time + " · " : ""}${item.meta || ""}`);
+      stopNo++;
+      const key = item.lat.toFixed(4) + ',' + item.lng.toFixed(4);
+      const dup = seen[key] || 0;
+      seen[key] = dup + 1;
+      const lat = item.lat + dup * 0.0006;
+      const lng = item.lng + dup * 0.0006;
+      const icon = L.divIcon({
+        className: '',
+        html: `<div class="num-pin"><span>${stopNo}</span></div>`,
+        iconSize: [26, 26],
+        iconAnchor: [13, 26],
+        popupAnchor: [0, -26]
+      });
+      const marker = L.marker([lat, lng], { icon }).addTo(map);
+      marker.bindPopup(`<b>${stopNo}. ${item.title}</b><br>${item.time !== "—" ? item.time + " · " : ""}${item.meta || ""}`);
       markers.push(marker);
-      bounds.push([item.lat, item.lng]);
+      bounds.push([lat, lng]);
     }
   });
+  if(bounds.length > 1){
+    routeLine = L.polyline(bounds, { color:'#5eb1ff', weight:2, dashArray:'6 8', opacity:0.7 }).addTo(map);
+  }
   if(bounds.length){
     map.fitBounds(bounds, { padding:[40,40], maxZoom:14 });
   }
@@ -365,7 +403,11 @@ DAYS.forEach(day => {
   tabsEl.appendChild(btn);
 });
 
-renderDay(1);
+// 여행 기간 중 접속하면 해당 일차 탭을 자동으로 연다
+const TRIP_START = new Date(2026, 6, 27); // 2026-07-27
+const today = new Date();
+const dayDiff = Math.floor((new Date(today.getFullYear(), today.getMonth(), today.getDate()) - TRIP_START) / 86400000);
+renderDay(dayDiff >= 0 && dayDiff <= 3 ? dayDiff + 1 : 1);
 </script>
 
 </body>
