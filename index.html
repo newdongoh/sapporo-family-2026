@@ -110,6 +110,31 @@
   .weather-card .wt{font-size:0.8rem;color:var(--text);margin-top:2px;}
   .weather-card .wt .lo{color:var(--sub);}
   .weather-card .wp{font-size:0.7rem;color:var(--accent);margin-top:1px;}
+  .weather-card{cursor:pointer;transition:border-color 0.2s, background 0.2s;}
+  .weather-card:hover{border-color:var(--accent);}
+  .weather-card.active{border-color:var(--accent);background:rgba(94,177,255,0.12);}
+  .hourly-panel{
+    display:none;
+    gap:8px;
+    padding:10px 24px 14px;
+    background:var(--panel);
+    border-bottom:1px solid var(--border);
+    overflow-x:auto;
+  }
+  .hourly-panel.open{display:flex;}
+  .hourly-chip{
+    flex:0 0 auto;
+    min-width:56px;
+    background:var(--panel2);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:6px 8px;
+    text-align:center;
+  }
+  .hourly-chip .hh{font-size:0.7rem;color:var(--sub);}
+  .hourly-chip .hi{font-size:1.1rem;line-height:1.3;}
+  .hourly-chip .ht{font-size:0.75rem;color:var(--text);}
+  .hourly-chip .hp{font-size:0.65rem;color:var(--accent);}
   #map{
     height:340px;
     width:100%;
@@ -300,6 +325,7 @@
 <div class="weather-bar" id="weatherBar">
   <div class="weather-card"><div class="wd">날씨 불러오는 중…</div></div>
 </div>
+<div class="hourly-panel" id="hourlyPanel"></div>
 
 <div id="map"></div>
 
@@ -532,15 +558,54 @@ const WEATHER_CODES = {
   95:["⛈️","뇌우"], 96:["⛈️","뇌우"], 99:["⛈️","뇌우"]
 };
 
+let HOURLY_DATA = null;
+let openWeatherDay = null;
+
+function renderHourlyPanel(dateStr){
+  const panel = document.getElementById('hourlyPanel');
+  if(!HOURLY_DATA || openWeatherDay === dateStr){
+    panel.classList.remove('open');
+    panel.innerHTML = '';
+    openWeatherDay = null;
+    document.querySelectorAll('.weather-card').forEach(c => c.classList.remove('active'));
+    return;
+  }
+  const times = HOURLY_DATA.hourly.time;
+  const chips = [];
+  times.forEach((t, i) => {
+    if(!t.startsWith(dateStr)) return;
+    const hour = Number(t.slice(11,13));
+    if(hour % 2 !== 0) return; // 2시간 간격으로만 표시
+    const code = HOURLY_DATA.hourly.weathercode[i];
+    const [icon] = WEATHER_CODES[code] || ["🌡️"];
+    const temp = Math.round(HOURLY_DATA.hourly.temperature_2m[i]);
+    const pop = HOURLY_DATA.hourly.precipitation_probability[i];
+    chips.push(`<div class="hourly-chip">
+      <div class="hh">${hour}시</div>
+      <div class="hi">${icon}</div>
+      <div class="ht">${temp}°</div>
+      <div class="hp">☔${pop}%</div>
+    </div>`);
+  });
+  panel.innerHTML = chips.join('');
+  panel.classList.add('open');
+  openWeatherDay = dateStr;
+  document.querySelectorAll('.weather-card').forEach(c => {
+    c.classList.toggle('active', c.dataset.date === dateStr);
+  });
+}
+
 async function loadWeather(){
   const bar = document.getElementById('weatherBar');
   try{
     const url = "https://api.open-meteo.com/v1/forecast?latitude=43.0642&longitude=141.3469"
       + "&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max"
+      + "&hourly=temperature_2m,weathercode,precipitation_probability"
       + "&timezone=Asia%2FTokyo&start_date=2026-07-27&end_date=2026-07-30";
     const res = await fetch(url);
     if(!res.ok) throw new Error("weather fetch failed");
     const data = await res.json();
+    HOURLY_DATA = data;
     const days = data.daily.time;
     bar.innerHTML = days.map((d, i) => {
       const code = data.daily.weathercode[i];
@@ -549,13 +614,16 @@ async function loadWeather(){
       const lo = Math.round(data.daily.temperature_2m_min[i]);
       const pop = data.daily.precipitation_probability_max[i];
       const label = DAYS.find(x => x.date.startsWith(`${d.slice(5,7).replace(/^0/,'')}/${d.slice(8,10).replace(/^0/,'')}`))?.label || d.slice(5);
-      return `<div class="weather-card">
+      return `<div class="weather-card" data-date="${d}">
         <div class="wd">${label} (${d.slice(5).replace('-', '/')})</div>
         <div class="wi">${icon}</div>
         <div class="wt">${hi}° <span class="lo">${lo}°</span></div>
         <div class="wp">☔ ${pop}%</div>
       </div>`;
     }).join("");
+    bar.querySelectorAll('.weather-card').forEach(card => {
+      card.addEventListener('click', () => renderHourlyPanel(card.dataset.date));
+    });
   }catch(e){
     bar.innerHTML = `<div class="weather-card"><div class="wd">삿포로 날씨</div><div class="wi">🌡️</div><div class="wt" style="font-size:0.72rem;color:var(--sub)">예보 준비 전<br>(출발 16일 전부터 제공)</div></div>`;
   }
